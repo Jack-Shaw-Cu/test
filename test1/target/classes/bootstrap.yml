@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: test1
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.0.102:8848
+        namespace: fe2bb55b-3ad7-4b4c-a08c-6740b48655e2
+      config:
+        server-addr: 192.168.0.102:8848
+        file-extension: yml
+        namespace: fe2bb55b-3ad7-4b4c-a08c-6740b48655e2
+  datasource:
+    username: ${keeper.name}
+    password: ${keeper.password}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${keeper.url}
+
+server:
+  port: 8080
+
