@@ -17,6 +17,7 @@ public class Test2Controller {
 
     @GetMapping("getNum/{id}")
     public String getNum(@PathVariable String id){
+        System.out.println("=============" + id);
         return id;
     }
 }
