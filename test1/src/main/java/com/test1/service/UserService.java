@@ -13,8 +13,16 @@ import java.util.List;
  */
 public interface UserService extends IService<UserDo> {
 
+    /**
+     * addUser
+     * @param userDo
+     */
     void addUser(UserDo userDo);
 
+    /**
+     * findAll
+     * @return
+     */
     List<UserDo> findAll();
 
 }

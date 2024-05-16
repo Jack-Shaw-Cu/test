@@ -1,5 +1,6 @@
 package com.test1.enums;
 
+import com.baomidou.mybatisplus.annotation.EnumValue;
 import com.baomidou.mybatisplus.annotation.IEnum;
 
 /**
@@ -8,7 +9,7 @@ import com.baomidou.mybatisplus.annotation.IEnum;
  * @Date: 2024/5/10 16:55
  * @description: myEnmu
  */
-public enum MyEnum implements IEnum<String> {
+public enum MyEnum{
 
     /**
      * 红色
@@ -27,6 +28,7 @@ public enum MyEnum implements IEnum<String> {
 
     private final Integer number;
 
+    @EnumValue
     private final String title;
 
     MyEnum(Integer number, String title) {
@@ -34,8 +36,17 @@ public enum MyEnum implements IEnum<String> {
         this.title = title;
     }
 
-    @Override
-    public String getValue() {
-        return this.name();
+    public static MyEnum getByNumber(Integer number){
+        for (MyEnum value : values()) {
+            if(value.number.equals(number)){
+                return value;
+            }
+        }
+        return null;
     }
+
+    public String getTitle(){
+        return this.title;
+    }
+
 }
