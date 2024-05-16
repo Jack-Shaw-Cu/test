@@ -4,6 +4,7 @@ import javax.xml.ws.Holder;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.function.Consumer;
 
@@ -61,5 +62,10 @@ public class tset {
         CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(() -> {
             return "张三";
         }, null);
+        try {
+            completableFuture.get();
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
     }
 }
