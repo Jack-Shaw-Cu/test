@@ -3,6 +3,7 @@ import org.junit.Test;
 import javax.xml.ws.Holder;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.function.Consumer;
 
@@ -57,6 +58,8 @@ public class tset {
     }
 
     public void test3(){
-
+        CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(() -> {
+            return "张三";
+        }, null);
     }
 }
