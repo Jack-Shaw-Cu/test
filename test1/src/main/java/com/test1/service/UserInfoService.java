@@ -43,4 +43,10 @@ public interface UserInfoService extends IService<UserInfoDo> {
      * @return
      */
     IPage<UserInfoDo> findByConditionPage(UserInfoQuery userInfoQuery);
+
+    /**
+     * findAll
+     * @return
+     */
+    List<UserInfoDo> findAll();
 }

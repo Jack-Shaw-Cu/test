@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.test1.enums.MyEnum;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * @author XT
  * @Title: UserInfo
@@ -14,7 +16,9 @@ import lombok.Data;
  */
 @Data
 @TableName("test_user_info")
-public class UserInfoDo {
+public class UserInfoDo implements Serializable {
+
+    private static final long serialVersionUID = 6201819776797751864L;
 
     @TableId(value = "id")
     private Long id;

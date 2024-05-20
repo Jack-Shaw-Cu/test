@@ -17,6 +17,10 @@ spring:
     password: ${keeper.password}
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: ${keeper.url}
+  redis:
+    host: 192.168.1.6
+    port: 6379
+
 
 server:
   port: 8080
