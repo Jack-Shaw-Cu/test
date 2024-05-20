@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.test1.bean.Constant;
 import com.test1.controller.query.UserInfoQuery;
 import com.test1.controller.vo.UserInfoVo;
 import com.test1.dao.UserInfoDao;
@@ -12,12 +13,14 @@ import com.test1.enums.MyEnum;
 import com.test1.mapper.UserInfoMapper;
 import com.test1.service.UserInfoService;
 import com.test1.service.bo.UserInfoBo;
-import org.apache.commons.lang3.ObjectUtils;
+import com.test1.util.RedisUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author XT
@@ -27,6 +30,9 @@ import java.util.List;
  */
 @Service
 public class UserInfoServiceImpl extends ServiceImpl<UserInfoDao, UserInfoDo> implements UserInfoService {
+
+    @Resource
+    private RedisUtils redisUtils;
 
     @Resource
     private UserInfoDao userInfoDao;
@@ -60,13 +66,23 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoDao, UserInfoDo> im
         if(StringUtils.isNotBlank(userInfoQuery.getName())){
             queryWrapper.eq("name",userInfoQuery.getName());
         }
-        if(null != userInfoQuery.getAge()){
+        if(Objects.nonNull(userInfoQuery.getAge())){
             queryWrapper.eq("age",userInfoQuery.getAge());
         }
         if(StringUtils.isNotBlank(userInfoQuery.getHobby())){
             queryWrapper.like("hobby",userInfoQuery.getHobby());
         }
         return this.baseMapper.findByConditionPage(new Page<>(userInfoQuery.getCurrent(), userInfoQuery.getSize()), queryWrapper);
+    }
+
+    @Override
+    public List<UserInfoDo> findAll() {
+        if(this.redisUtils.hasKey(Constant.HOT_USER)){
+            return (List<UserInfoDo>) this.redisUtils.get(Constant.HOT_USER);
+        }
+        List<UserInfoDo> list = this.baseMapper.selectList(null);
+        this.redisUtils.set(Constant.HOT_USER,list);
+        return list;
     }
 
 

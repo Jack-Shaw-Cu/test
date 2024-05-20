@@ -50,4 +50,9 @@ public class UserInfoController {
     public Result findByConditionPage(@Valid @RequestBody UserInfoQuery userInfoQuery){
         return Result.success("查询成功",this.userInfoService.findByConditionPage(userInfoQuery));
     }
+
+    @GetMapping("all")
+    public Result findAll(){
+        return Result.success("查询成功",this.userInfoService.findAll());
+    }
 }

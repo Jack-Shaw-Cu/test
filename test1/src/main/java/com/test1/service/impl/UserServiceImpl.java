@@ -9,7 +9,6 @@ import com.test1.service.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
 /**
  * @author XT
@@ -19,6 +18,7 @@ import java.util.concurrent.CompletableFuture;
  */
 @Service
 public class UserServiceImpl extends ServiceImpl<UserDao, UserDo> implements UserService {
+
 
     @Override
     public void addUser(UserDo userDo) {
