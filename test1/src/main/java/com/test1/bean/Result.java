@@ -54,4 +54,8 @@ public class Result implements Serializable {
         return new ResultBuilder().code("1").message(message).data(data).build();
     }
 
+    public static Result success(String message){
+        return new ResultBuilder().code("1").message(message).build();
+    }
+
 }

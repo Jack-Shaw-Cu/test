@@ -2,7 +2,6 @@ package com.test1.mapper;
 
 import com.test1.controller.vo.UserInfoVo;
 import com.test1.dao.entity.UserInfoDo;
-import com.test1.enums.MyEnum;
 import com.test1.service.bo.UserInfoBo;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

@@ -6,6 +6,7 @@ import com.test1.controller.query.UserInfoQuery;
 import com.test1.controller.query.UserQuery;
 import com.test1.controller.vo.UserInfoVo;
 import com.test1.dao.entity.UserInfoDo;
+import com.test1.service.bo.UserBo;
 import com.test1.service.bo.UserInfoBo;
 
 import java.util.List;
@@ -49,4 +50,11 @@ public interface UserInfoService extends IService<UserInfoDo> {
      * @return
      */
     List<UserInfoDo> findAll();
+
+    /**
+     * updateUserInfo
+     * @param id
+     * @param userInfoBo
+     */
+    void updateUserInfo(Long id, UserInfoBo userInfoBo) throws Exception;
 }

@@ -36,7 +36,7 @@ public class LogAspectController {
 
     /**
      * 执行方法前打印
-     * @param joinPoint
+     * @param joinPoint 切点
      */
     @Before(value = "controllerAspect()")
     public void methodBefore(JoinPoint joinPoint){

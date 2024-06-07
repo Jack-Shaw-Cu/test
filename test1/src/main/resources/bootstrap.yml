@@ -27,3 +27,5 @@ server:
 
 mybatis-plus:
   type-aliases-package: com.test1.dao.entity
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

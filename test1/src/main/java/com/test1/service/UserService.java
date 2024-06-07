@@ -1,7 +1,11 @@
 package com.test1.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.test1.bean.UserExcel;
+import com.test1.controller.vo.UserVo;
 import com.test1.dao.entity.UserDo;
+import com.test1.service.bo.UserBo;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -15,14 +19,28 @@ public interface UserService extends IService<UserDo> {
 
     /**
      * addUser
-     * @param userDo
+     * @param userBo
      */
-    void addUser(UserDo userDo);
+    void addUser(UserBo userBo);
 
     /**
      * findAll
      * @return
      */
-    List<UserDo> findAll();
+    List<UserVo> findAll();
+
+    /**
+     * findById
+     * @param id
+     * @return
+     */
+    UserVo findById(Long id);
+
+    /**
+     * importExcel
+     * @param file
+     * @return
+     */
+    List<UserExcel> importExcel(MultipartFile file);
 
 }
